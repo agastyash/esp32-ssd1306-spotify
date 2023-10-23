@@ -1,4 +1,4 @@
-### esp32-ssd1306-spotify
+#### esp32-ssd1306-spotify
 # Low footprint OLED Spotify Display [and Controls]
 Use an ESP32 devboard and an SSD1306 OLED display (128x64 minimum) to show the Spotify player status of a linked account.
 
@@ -19,7 +19,8 @@ Use an ESP32 devboard and an SSD1306 OLED display (128x64 minimum) to show the S
 ## Instructions
 1. Get a Spotify app refresh token from [here](https://github.com/witnessmenow/spotify-api-arduino/blob/main/examples/getRefreshToken/getRefreshToken.ino)
 2. Clone this repository, open it with PlatformIO in VS Code.
-3. Create a 'secret.h' file under /include/.
-4. Copy the format from the comment in main.cpp and fill in the details including the refresh token obtained from step 1.
-5. Change the SCL and SDA pin definitions in main.cpp to the pins you want to use.
-6. Compile and upload the code. If something goes wrong, set the ess-debug flag to ON in main.cpp and use the serial output to debug.
+3. Download and place the Adafruit SSD1306, Adafruit GFX and SpotifyArduino libraries under lib/.
+4. Create a 'secret.h' file under include/.
+5. Copy the format from the comment in main.cpp and fill in the details including the refresh token obtained from step 1.
+6. Change the SCL and SDA pin definitions in main.cpp to the pins you want to use.
+7. Compile and upload the code. If something goes wrong, set the ess-debug flag to ON in main.cpp and use the serial output to debug.
