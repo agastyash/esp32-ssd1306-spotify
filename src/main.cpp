@@ -125,7 +125,7 @@ void setup()
     // client.setInsecure(); (bad idea i think)
 
     // If you want to enable some extra debugging
-    // uncomment the "#define SPOTIFY_DEBUG" in SpotifyArduino.h (spams a shit load of text)
+    // uncomment the "#define SPOTIFY_DEBUG" in SpotifyArduino.h (spams a lot of text)
 
     // Serial.println("Refreshing Access Tokens");
     if (!spotify.refreshAccessToken())
@@ -135,23 +135,23 @@ void setup()
 
     // Pin API fetches to core 0
     xTaskCreatePinnedToCore(
-                        performAPIFetch,   /* Task function. */
-                        "spotifyAPIFetch",     /* name of task. */
-                        10000,       /* Stack size of task */
-                        NULL,        /* parameter of the task */
-                        1,           /* priority of the task */
-                        &spotifyAPIFetch, /* Task handle to keep track of created task */
-                        0);          /* pin task to core 0 */
+                        performAPIFetch,
+                        "spotifyAPIFetch",
+                        10000,
+                        NULL,
+                        1,
+                        &spotifyAPIFetch,
+                        0);
 
     // Pin screen updates to core 1
     xTaskCreatePinnedToCore(
-                        performScreenUpdate,   /* Task function. */
-                        "screenUpdates",     /* name of task. */
-                        10000,       /* Stack size of task */
-                        NULL,        /* parameter of the task */
-                        1,           /* priority of the task */
-                        &screenUpdates,      /* Task handle to keep track of created task */
-                        1);          /* pin task to core 1 */
+                        performScreenUpdate,
+                        "screenUpdates",
+                        10000,
+                        NULL,
+                        1,
+                        &screenUpdates,
+                        1);
 }
 
 
@@ -209,7 +209,7 @@ void wirelessSetup()
     // Serial.print("Connected to ");
     // Serial.println(ssid);
     
-    // Centers the wifi confirmation text on screen and display it for 1 second
+    // Centers the wifi confirmation text on screen and displays it for 1 second
     // This is unnecessarily long but it's only done once so it doesn't matter much and it looks cleaner, if you know your SSID you can just plug cursor values directly into the setCursor call
     int16_t centercursorx, centercursory; uint16_t centerwidth, centerheight;
     display.getTextBounds(String("Connected to:"), 0, 0, &centercursorx, &centercursory, &centerwidth, &centerheight);
@@ -225,7 +225,7 @@ void wirelessSetup()
 
 void execute1306()
 {
-    // Ensure Wire starts on user defined pins (my ESP32-CAM doesn't have the default esp32 gpio pins for sda and scl)
+    // Ensure Wire starts on user defined pins (my ESP32-CAM doesn't have the default ESP32 GPIO pins for SDA and SCL)
     Wire.begin(SDA, SCL);
 
     // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
@@ -372,7 +372,7 @@ void performAPIFetch( void * pvParameters ){
             // Serial.print("Error: ");
             // Serial.println(status);
         }
-        // Dynamic 1 second delay (adjusted by the delayBetweenRequests variable)
+        // Dynamic delay (adjusted by the delayBetweenRequests variable)
         delay(((delayBetweenRequests-(millis()-y))*((millis()-y)<delayBetweenRequests)));
     }
 }
@@ -414,10 +414,10 @@ void performScreenUpdate( void * pvParameters ){
 
 void printCurrentlyPlayingToSerial(CurrentlyPlaying currentlyPlaying)
 {
-    // If vacation mode is on just ensure trackUri is set to something asinine and skip this shit
+    // If vacation mode is on just ensure trackUri is set to something asinine and skip this
     if (vacationTime)
     {
-        trackUri = "nahimjustchillingimballingimcoolin" + String(millis());
+        trackUri = "nahimjustchillingimcoolin" + String(millis());
         return;
     }
     // Only update main data if the track has changed
@@ -481,7 +481,7 @@ void printTrack()
         display.setCursor(40, 6);
         display.println(trackName);
 
-        // Left shift the whole string by 2 because this shit is slow
+        // Left shift the whole string by 2
         String ogTrackName = trackName; // Store original name
         for (unsigned int j = 0; j < trackName.length() - 1; j++) // Shift all characters but the last two
         {
@@ -513,7 +513,7 @@ void printArtist()
         display.setCursor(40, 18);
         display.println(artistName);
 
-        // Left shift the whole string by 2 because erm slow
+        // Left shift the whole string by 2
         String ogArtistName = artistName; // Store original name
         for (unsigned int j = 0; j < artistName.length() - 1; j++) // Shift all characters but the last two
         {
@@ -539,7 +539,7 @@ void updateProgress()
     if (playingState)
     {
         // Progress bar percentage update
-        percentage = ((float)(progress+millis()-pseudoProgress) / (float)duration) * 128; // Looney tunes shit just to get this to look like it's not slow
+        percentage = ((float)(progress+millis()-pseudoProgress) / (float)duration) * 128; // Looney tunes type idea just to get this to look like it's not slow lol
         
         // Progress text update
         progressText = formatMilliseconds(progress+millis()-pseudoProgress, duration);
