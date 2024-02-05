@@ -1,7 +1,7 @@
 #### esp32-ssd1306-spotify
 # Low footprint OLED Spotify Display [and Controls]
 Use an ESP32 devboard and an SSD1306 OLED display (128x64 minimum) to show the Spotify player status of a linked account.
-https://i.imgur.com/jv3rJsb.mp4
+<blockquote class="imgur-embed-pub" lang="en" data-id="jv3rJsb" data-context="false" ><a href="//imgur.com/jv3rJsb"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
 ## Features
