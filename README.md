@@ -7,7 +7,7 @@ Use an ESP32 devboard and an SSD1306 OLED display (128x64 minimum) to show the S
 ## Features
 - Uses both cores to keep the display updated while handling API fetch tasks separately and at a precise tickrate.
 - Display update functions built from scratch to make region-specific updates as efficient as possible.
-- Scrolling text and progress bar updates at separate time intervals based on the ESP32's own timer.
+- Scrolling text and progress bar update at separate time intervals based on the ESP32's own timer.
 - Predictive progress bar display to make spikes in API or CPU response time less noticeable.
 
 ## Foundation
